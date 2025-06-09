@@ -4,8 +4,8 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://solena-art.github.io',
-  base: '/artndesign',
+  site: 'https://solena.co.kr',
+  base: '/',
   integrations: [tailwind(), mdx(), sitemap()],
   output: 'static',
   build: {
