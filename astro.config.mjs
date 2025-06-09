@@ -11,5 +11,8 @@ export default defineConfig({
   output: 'static',
   build: {
     assets: '_assets'
+  },
+  vite: {
+    base: '/artndesign/'
   }
 }); 
