@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  // 정부 프로젝트
+  {
+    title: "정부 프로젝트",
+    category: "정부",
+    image: "Port_Gov_1.png"
+  },
+  {
+    title: "정부 프로젝트",
+    category: "정부",
+    image: "Port_Gov_2.png"
+  },
+  {
+    title: "정부 프로젝트",
+    category: "정부",
+    image: "Port_Gov_3.png"
+  },
+  {
+    title: "정부 프로젝트",
+    category: "정부",
+    image: "Port_Gov_4.png"
+  },
+  {
+    title: "정부 프로젝트",
+    category: "정부",
+    image: "Port_Gov_5.png"
+  },
+  // 산업단체 프로젝트
+  {
+    title: "산업단체 프로젝트",
+    category: "산업단체",
+    image: "Port_Ind_1.png"
+  },
+  {
+    title: "산업단체 프로젝트",
+    category: "산업단체",
+    image: "Port_Ind_2.png"
+  },
+  {
+    title: "산업단체 프로젝트",
+    category: "산업단체",
+    image: "Port_Ind_3.png"
+  },
+  {
+    title: "산업단체 프로젝트",
+    category: "산업단체",
+    image: "Port_Ind_4.png"
+  },
+  // 기업 프로젝트
+  {
+    title: "기업 프로젝트",
+    category: "기업",
+    image: "Port_Prv_1.png"
+  },
+  {
+    title: "기업 프로젝트",
+    category: "기업",
+    image: "Port_Prv_2.png"
+  },
+  {
+    title: "기업 프로젝트",
+    category: "기업",
+    image: "Port_Prv_4.png"
+  },
+  {
+    title: "기업 프로젝트",
+    category: "기업",
+    image: "Port_Prv_5.png"
+  },
+  {
+    title: "기업 프로젝트",
+    category: "기업",
+    image: "Port_Prv_6.png"
+  }
+];
+
+const categories = [
+  { id: "all", name: "전체" },
+  { id: "gov", name: "정부" },
+  { id: "ind", name: "산업단체" },
+  { id: "prv", name: "기업" }
+];
+---
+
+<Layout title="포트폴리오 - 아트앤디자인">
+  <main>
+    <!-- Hero Section -->
+    <section class="relative py-16 bg-gradient-to-r from-primary to-secondary">
+      <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto text-center text-white">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">포트폴리오</h1>
+          <p class="text-lg">아트앤디자인의 대표 프로젝트를 소개합니다</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 프로젝트 필터 -->
+    <section class="py-8 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          {categories.map((category) => (
+            <button 
+              class="px-6 py-2 text-base rounded-full bg-light text-gray-600 hover:bg-primary hover:text-white transition-colors"
+              data-category={category.id}
+            >
+              {category.name}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 프로젝트 그리드 -->
+    <section class="py-12 bg-light">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <div class="relative aspect-[4/3] bg-white overflow-hidden flex items-center justify-center">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  class="w-1/2 h-auto object-contain transform hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-6">
+                <span class="inline-block px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-3">
+                  {project.category}
+                </span>
+                <h3 class="text-xl font-bold line-clamp-1">{project.title}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-4">프로젝트 문의</h2>
+          <p class="text-lg text-gray-600 mb-6">
+            고객님의 비즈니스 성공을 위한 최적의 솔루션을 제공해드리겠습니다.
+          </p>
+          <a href="/contact" class="inline-block bg-primary text-white px-8 py-3 rounded-lg text-lg font-bold hover:bg-secondary transition-colors">
+            문의하기
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  // 필터링 기능 구현
+  const filterButtons = document.querySelectorAll('[data-category]');
+  const projects = document.querySelectorAll('.grid > div');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.dataset.category;
+      
+      // 버튼 스타일 업데이트
+      filterButtons.forEach(btn => {
+        btn.classList.remove('bg-primary', 'text-white');
+        btn.classList.add('bg-light', 'text-gray-600');
+      });
+      button.classList.remove('bg-light', 'text-gray-600');
+      button.classList.add('bg-primary', 'text-white');
+
+      // 프로젝트 필터링
+      projects.forEach(project => {
+        const projectCategory = project.querySelector('.text-primary').textContent;
+        if (category === 'all' || projectCategory === button.textContent) {
+          project.style.display = 'block';
+        } else {
+          project.style.display = 'none';
+        }
+      });
+    });
+  });
+</script> 

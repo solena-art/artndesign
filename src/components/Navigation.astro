@@ -1,0 +1,85 @@
+---
+const navItems = [
+  { href: '/', text: '홈' },
+  { href: '/about', text: '회사소개' },
+  { href: '/services', text: '서비스' },
+  { href: '/portfolio', text: '포트폴리오' },
+  { href: '/contact', text: '문의하기' }
+];
+---
+
+<header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+      <!-- 로고 -->
+      <a href="/" class="flex items-center">
+        <img
+          src="/logo.png"
+          alt="Artndesign Logo"
+          class="h-8 w-auto"
+        />
+      </a>
+
+      <!-- 데스크톱 메뉴 -->
+      <div class="hidden md:flex space-x-8">
+        {navItems.map(item => (
+          <a
+            href={item.href}
+            class="text-text hover:text-primary transition-colors"
+          >
+            {item.text}
+          </a>
+        ))}
+      </div>
+
+      <!-- 모바일 메뉴 버튼 -->
+      <button
+        class="md:hidden text-text hover:text-primary transition-colors"
+        id="mobile-menu-button"
+        aria-label="메뉴 열기"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- 모바일 메뉴 -->
+    <div
+      class="md:hidden hidden"
+      id="mobile-menu"
+    >
+      <div class="flex flex-col space-y-4 mt-4 pb-4">
+        {navItems.map(item => (
+          <a
+            href={item.href}
+            class="text-text hover:text-primary transition-colors"
+          >
+            {item.text}
+          </a>
+        ))}
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // 모바일 메뉴 토글
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script> 
