@@ -1,15 +1,12 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import react from '@astrojs/react';
+import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://artndesign.co.kr',
-  integrations: [
-    tailwind(),
-    react(),
-    sitemap()
-  ],
+  site: 'https://solena-art.github.io',
+  base: '/artndesign',
+  integrations: [tailwind(), mdx(), sitemap()],
   output: 'static',
   build: {
     assets: '_assets'
