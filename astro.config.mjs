@@ -9,6 +9,7 @@ export default defineConfig({
   integrations: [tailwind(), mdx(), sitemap()],
   output: 'static',
   build: {
-    assets: '_assets'
+    assets: '_assets',
+    inlineStylesheets: 'auto'
   }
 }); 
