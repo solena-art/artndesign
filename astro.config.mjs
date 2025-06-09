@@ -6,13 +6,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://solena-art.github.io',
   base: '/artndesign',
-  trailingSlash: 'always',
   integrations: [tailwind(), mdx(), sitemap()],
   output: 'static',
   build: {
     assets: '_assets'
-  },
-  vite: {
-    base: '/artndesign/'
   }
 }); 
