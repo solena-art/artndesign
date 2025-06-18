@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://solena.co.kr',
+  site: 'https://artdesigner.co.kr',
   base: '/',
   integrations: [tailwind(), mdx(), sitemap()],
   output: 'static',
