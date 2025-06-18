@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://artdesigner.co.kr',
-  base: '/',
+  base: '',
   integrations: [tailwind(), mdx(), sitemap()],
   output: 'static',
   build: {
